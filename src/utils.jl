@@ -94,7 +94,7 @@ generate 1-periodic downwards "spike".
      0         │
 
 """
-generate_spike(; a=-9.0, b=0.5) = x -> 1 - exp(a*abs(mod(x,1)-0.5)^b)
+generate_spike(; a=-9.0, b=0.5) = x -> 1 - (a == -Inf ? 0.0 : exp(a*abs(mod(x,1)-0.5)^b))
 
 """
 Angle of -z scaled in the interval [0,1]
