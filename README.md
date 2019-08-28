@@ -19,7 +19,7 @@ Domain coloring for complex functions.
    * [cs_m, cs_e](#cs_m-cs_e): [cs_m](#cs_m), [cs_e](#cs_e)
    * [cs_c](#cs_c)
    * [cs_useImage](#cs_useimage)
-   * [Colorschemes with only a few colors](#colorschemes-with-only-a-few-colors): [cs_stripes](#cs_stripes)
+   * [Colorschemes with only a few colors](#colorschemes-with-only-a-few-colors): [cs_stripes](#cs_stripes), [cs_angle_abs_stripes](#cs_angle_abs_stripes)
 
 ## What are portraits?
 
@@ -308,12 +308,6 @@ Each z ∊ ℂ has n=length(directions) flags (z ∊ S1, z ∊ S1, ..., z ∊ Sn
 This make 2^n possible flag-combinations. For every combination there
 need to be a color in colors.
 
-```julia
-s_angle_abs_stripes(directions, colors)
-```
-
-Uses `cs_stripes` for (angle(z), abs(z)).
-
 
 `cs_stripes([5.0 + 0.0im], [HSV(0.0, 0.0, 1.0), HSV(0.0, 0.0, 0.0)]))`
 
@@ -338,6 +332,14 @@ cs_stripes(
 ```
 
 <img alt="cs_stripes" align="center" width="350px" src="https://github.com/luchr/ComplexPortraitsImages/blob/master/images/cs_stripes03.png" /> <img alt="cs_stripes_id" align="center" width="350px" src="https://github.com/luchr/ComplexPortraitsImages/blob/master/images/cs_stripes03_id.png" /> 
+
+#### cs_angle_abs_stripes
+
+```julia
+cs_angle_abs_stripes(directions, colors)
+```
+
+Uses `cs_stripes` for (angle(z), abs(z)).
 
 `cs_angle_abs_stripes([5.0 + 0.0im], [HSV(0.0, 0.0, 1.0), HSV(0.0, 0.0, 0.0)])`
 
