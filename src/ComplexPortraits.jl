@@ -3,7 +3,7 @@
 """
 module ComplexPortraits
 
-using Colors
+using Colors, RecipesBase
 
 """macro for importing the *huge* set of symbols."""
 macro import_huge()
@@ -21,7 +21,8 @@ macro import_huge()
                             cs_gridReIm, cs_gridReIm_logabs, cs_gridReIm_abs,
                             cs_stripes, cs_angle_abs_stripes,
                             cs_useImage,
-                            portrait
+                            portrait,
+                            phaseplot, phaseplot!, PhasePlot
   )
 end
 
@@ -36,7 +37,8 @@ macro import_normal()
                             cs_gridReIm, cs_gridReIm_logabs, cs_gridReIm_abs,
                             cs_stripes, cs_angle_abs_stripes,
                             cs_useImage,
-                            portrait
+                            portrait,
+                            phaseplot, phaseplot!, PhasePlot
   )
 end
 
@@ -67,6 +69,8 @@ function portrait(z_upperleft, z_lowerright, f;
     for y in LinRange(imag(z_upperleft), imag(z_lowerright), no_pixels[1]),
         x in LinRange(real(z_upperleft), real(z_lowerright), no_pixels[2])]
 end
+
+include("./plotrecipes.jl")
 
 end
 

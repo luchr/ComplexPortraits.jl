@@ -1,7 +1,7 @@
 # ComplexPortraits
 
-[![Travis](https://travis-ci.org/luchr/ComplexPortraits.jl.svg?branch=devel)](https://travis-ci.org/luchr/ComplexPortraits.jl)
-[![Coverage Status](https://coveralls.io/repos/github/luchr/ComplexPortraits.jl/badge.svg?branch=devel)](https://coveralls.io/github/luchr/ComplexPortraits.jl?branch=devel)
+[![Travis](https://travis-ci.org/luchr/ComplexPortraits.jl.svg?branch=master)](https://travis-ci.org/luchr/ComplexPortraits.jl)
+[![Coverage Status](https://coveralls.io/repos/github/luchr/ComplexPortraits.jl/badge.svg?branch=master)](https://coveralls.io/github/luchr/ComplexPortraits.jl?branch=master)
 
 
 Domain coloring for complex functions.
