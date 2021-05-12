@@ -340,6 +340,38 @@ function test_cs_pqd()
   end
 end
 
+function test_cs_grid()
+  @testset "cs_grid" begin
+    @testset "cs_gridReIm" begin
+      fct = cs_gridReIm()
+      @inferred fct(0.0+0im, 0.0+0im)
+      @testset for pair in
+          (+1.0+0.0im => HSV(0.0, 1.0, 0.0),
+           +1.0+1.0im => HSV(30.0, 1.0, 0.0),
+           +0.0+1.0im => HSV(60.0, 1.0, 0.0),
+           -1.0+1.0im => HSV(120.0, 1.0, 0.0),
+           -1.0+0.0im => HSV(180.0, 1.0, 0.0),
+           -1.0-1.0im => HSV(210.0, 1.0, 0.0),
+           +0.0-1.0im => HSV(240.0, 1.0, 0.0),
+           +1.0-1.0im => HSV(300.0, 1.0, 0.0))
+        @test fct(0.0+0im, pair[1]) === pair[2]
+      end
+    end
+
+    @testset "cs_gridRe_abs" begin
+      fct = cs_gridReIm_abs()
+      @inferred fct(0.0+0im, 0.0+0im)
+      @testset for pair in
+          (+1.0+0.0im => HSV(0.0, 0.0, 1.0),
+           +0.0+1.0im => HSV(60.0, 0.0, 1.0),
+           -1.0+0.0im => HSV(180.0, 0.0, 1.0),
+           +0.0-1.0im => HSV(240.0, 0.0, 1.0))
+        @test fct(0.0+0im, pair[1]) === pair[2]
+      end
+    end
+  end
+end
+
 function test_portrait()
   @testset "portrait" begin
     @inferred portrait(-1.0+1.0im, 1.0-1.0im,
@@ -368,6 +400,7 @@ test_cs_c()
 test_cs_me()
 test_cs_j()
 test_cs_pqd()
+test_cs_grid()
 
 test_portrait()
 
