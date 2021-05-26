@@ -12,7 +12,7 @@
   xticks := (LinRange(0, no_pixels[1], no_ticks[1]), 
              round.(LinRange(imag(z_lowerright), imag(z_upperleft), no_ticks[1]), sigdigits=ticks_sigdigits))
   yticks := (LinRange(0, no_pixels[2], no_ticks[2]), 
-             round.(LinRange(real(z_upperleft), real(z_lowerright), no_ticks[2]), sigdigits=ticks_sigdigits))
+             reverse!(round.(LinRange(real(z_upperleft), real(z_lowerright), no_ticks[2]), sigdigits=ticks_sigdigits)))
 
   img
 end
