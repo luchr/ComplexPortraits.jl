@@ -13,7 +13,8 @@ Domain coloring for complex functions.
 3. [Installing the ComplexPortraits package](#installing-the-complexportraits-package)
 4. [Using the package](#using-the-package)
 5. [Creating, viewing and saving portraits](#creating-viewing-and-saving-portraits)
-6. [Examples of color schemes](#examples-of-color-schemes)
+6. [PlotRecipe support](#support-for-plots)
+7. [Examples of color schemes](#examples-of-color-schemes)
    * [cs_grid...](#cs_grid): [cs_gridReIm](#cs_gridreim), [cs_gridReIm_logabs](#cs_gridreim_logabs), [cs_gridReIm_abs](#cs_gridreim_abs)
    * [cs_p, cs_j, cs_d, cs_q](#cs_p-cs_j-cs_d-cs_q): [cs_p](#cs_p), [cs_j](#cs_j), [cs_d](#cs_d), [cs_q](#cs_q)
    * [cs_m, cs_e](#cs_m-cs_e): [cs_m](#cs_m), [cs_e](#cs_e)
@@ -117,6 +118,25 @@ save(File(format"PNG", "z_squared.png"), img)
 To directly view such an image in Jupyter, Atom, etc. (or in an extra window)
 and/or process the image in other ways, please
 see and use the [JuliaImages ecosystem](https://github.com/JuliaImages).
+
+## Support for Plots
+
+Since version 0.2.0 `Plots.jl` is supported via Plot recipes:
+
+```julia
+using Plots, ComplexPortraits
+ComplexPortraits.phaseplot(-2.0 + 2.0im, 2.0 - 2.0im, z -> exp(z) - z)
+```
+
+Here is the full list if kwargs for `phaseplot`:
+
+```julia
+phaseplot(z_upperleft, z_lowerright, f;
+           no_pixels=(600, 600),
+           point_color=cs_j(),
+           no_ticks=(7, 7),
+           ticks_sigdigits=2)
+```
 
 ## Examples of color schemes
 
