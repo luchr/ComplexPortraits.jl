@@ -1,19 +1,24 @@
 @userplot PhasePlot
 # args:  z_upperleft::Complex, z_lowerright::Complex, f::Function
-@recipe function plot_portrait(P::PhasePlot; 
-                               no_pixels=(600,600), point_color=cs_j(),
-                               no_ticks=7, ticks_sigdigits=2)
-  length(no_ticks) == 1 && (no_ticks = (no_ticks, no_ticks))
+@recipe function plot_portrait(
+    P::PhasePlot; 
+    no_pixels=(600,600), point_color=cs_j(), no_ticks=7, ticks_digits=2,
+    xticks=(LinRange(0, no_pixels[1], length(no_ticks) == 1 ? no_ticks :  no_ticks[1]),
+            round.(LinRange(real(P.args[1]), real(P.args[2]),
+                            length(no_ticks) == 1 ? no_ticks :  no_ticks[1]),
+                   digits=ticks_digits)),
+    yticks=(LinRange(0, no_pixels[2], length(no_ticks) == 1 ? no_ticks : no_ticks[2]),
+            round.(LinRange(imag(P.args[1]), imag(P.args[2]),
+                            length(no_ticks) == 1 ? no_ticks : no_ticks[2]),
+                   digits=ticks_digits))
+   )
   z_upperleft, z_lowerright, f = P.args[1:3]            
   img = portrait(z_upperleft, z_lowerright, f;
                  no_pixels=no_pixels, point_color=point_color);
 
   seriestype := :heatmap
-  xticks := (LinRange(0, no_pixels[1], no_ticks[1]), 
-             round.(LinRange(real(z_lowerright), real(z_upperleft), no_ticks[1]), sigdigits=ticks_sigdigits))
-  yticks := (LinRange(0, no_pixels[2], no_ticks[2]), 
-             reverse!(round.(LinRange(imag(z_upperleft), imag(z_lowerright), no_ticks[2]), sigdigits=ticks_sigdigits)))
-
+  xticks := xticks
+  yticks := yticks
   img
 end
 
@@ -35,7 +40,7 @@ phaseplot(-2.0 + 2.0im, 2.0 - 2.0im, z -> z^2;
           no_pixels=(600, 600),
           point_color=cs_j(),
           no_ticks=(7, 7),
-          ticks_sigdigits=2)
+          ticks_igits=2)
 ```
 
 Todo: hack colorbar plotattribute to show colorwheel.
